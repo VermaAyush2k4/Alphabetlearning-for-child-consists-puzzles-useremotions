@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Choose an Alphabet</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        margin: 5px;
+        height: 730px;
+        color: #333; /* Default text color */
+        background-color: #fcffea;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .instructions {
+        font-weight: 500;
+        font-size: 20px;
+        margin: 7px;
+      }
+
+      .row {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .letter {
+        font-size: 22px;
+        width: 50px;
+        height: 50px;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        color: rgb(213, 213, 213);
+        font-weight: bold;
+        border-radius: 17px 0 0 0;
+        background-color: rgb(0, 99, 66);
+        margin: 8px;
+        cursor: pointer;
+      }
+
+      .back-btn {
+        position: relative; /* Position at the bottom */
+        margin-top: 30px;
+        width: 80px;
+        height: 40px;
+        background-color: var(--Blue, rgba(243, 7, 7, 0.7));
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="instructions">Choose an Alphabet to learn</div>
+      <div class="row">
+        <div class="letter">A</div>
+        <div class="letter" style="background-color: bisque; color: black;" onclick="window.location.href= 'letter-B.html'">B</div>
+        <div class="letter">C</div>
+      </div>
+      <div class="row">
+        <div class="letter">D</div>
+        <div class="letter">E</div>
+        <div class="letter">F</div>
+      </div>
+      <div class="row">
+        <div class="letter">G</div>
+        <div class="letter">H</div>
+        <div class="letter">I</div>
+      </div>
+      <div class="row">
+        <div class="letter">J</div>
+        <div class="letter">K</div>
+        <div class="letter">L</div>
+      </div>
+      <div class="row">
+        <div class="letter" onclick="window.location.href='letter-m.html'">M</div>
+        <div class="letter">N</div>
+        <div class="letter">O</div>
+      </div>
+      <div class="row">
+        <div class="letter" style="background-color: bisque; color: black;" onclick="window.location.href= 'letter-P/letter-P.html'">P</div>
+        <div class="letter">Q</div>
+        <div class="letter">R</div>
+      </div>
+      <div class="row">
+        <div class="letter">S</div>
+        <div class="letter">T</div>
+        <div class="letter">U</div>
+      </div>
+      <div class="row">
+        <div class="letter">V</div>
+        <div class="letter">W</div>
+        <div class="letter">X</div>
+      </div>
+      <div class="row">
+        <div class="letter" style="background-color: bisque; color: black;" onclick="window.location.href= 'letter-Y.html'">Y</div>
+        <div class="letter">Z</div>
+      </div>
+      <button class="back-btn" onclick="window.location.href = 'Home.html';">Home</button>
+    </div>
+  </body>
+</html>

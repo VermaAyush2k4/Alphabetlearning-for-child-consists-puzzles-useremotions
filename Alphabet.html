@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Writing Practice</title>
+    <link rel="stylesheet" type="text/css" href="styles1.css">
+</head>
+
+<body>
+    <h1><button onclick="prevLetter()" style="width: 100px; height: 50px;"><h1>Prev</h1></button></h1>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                <source src="A.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter A:</h2>
+                <canvas id="canvas" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container">
+                <button onclick="recognizeAndCompare()">Recognize and Compare</button>
+            </div>
+            <div class="sub-container">
+                <button onclick="canvas.erase()">Erase</button>
+            </div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result'></span>
+        </div>
+        <div id="ans"></div>
+        <input type="hidden" id="letterToCompare" value="A">
+        <label for="letterInputA">Enter Letter A:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputA" placeholder="Write the letter A with your mouse">
+            </div>
+            <div class="sub-container"> <button onclick="checkEnteredLetter('A')">Check Entered Letter</button>
+            </div>
+            <div class="sub-container"><button onclick="speakLetter('A')">Listen</button>
+            </div>
+            <div class="sub-container"> <label><input type="checkbox" id="correctCheckEnteredA" disabled>Correct (Entered)?</label>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container"> <video width="360" height="290" controls muted>
+                <source src="B.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter B:</h2>
+                <canvas id="canvas1" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container">
+                <button onclick="recognizeAndCompare1()">Recognize and Compare</button>
+            </div>
+            <div class="sub-container">
+                <button onclick="canvas1.erase()">Erase</button>
+            </div>
+        </div>
+        <div>
+            <h1>Result:</h1> <span id='result1'></span>
+        </div>
+        <div id="ans1"></div>
+        <input type="hidden" id="letterToCompare1" value="B">
+        <label for="letterInputB">Enter Letter B:</label>
+        <div class="main-container">
+            <div class="sub-container">
+                <input type="text" id="letterInputB" placeholder="Write the letter B with your mouse">
+            </div>
+            <div class="sub-container">
+                <button onclick="checkEnteredLetter('B')">Check Entered Letter</button>
+            </div>
+            <div class="sub-container"><button onclick="speakLetter('B')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredB" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container"> <video width="360" height="290" controls muted>
+                <source src="C.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter C:</h2>
+                <canvas id="canvas2" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"> <button onclick="recognizeAndCompare2()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas2.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1> <span id='result2'></span></div>
+        <div id="ans2"></div>
+        <input type="hidden" id="letterToCompare2" value="C">
+        <label for="letterInputC">Enter Letter C:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputC" placeholder="Write the letter C with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('C')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('C')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredC" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container"><video width="360" height="290" controls muted>
+                <source src="D.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter D:</h2>
+                <canvas id="canvas3" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare3()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas3.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1> <span id='result3'></span></div>
+        <div id="ans3"></div>
+        <input type="hidden" id="letterToCompare3" value="D">
+        <label for="letterInputD">Enter Letter D:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputD" placeholder="Write the letter D with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('D')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('D')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredD" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container"><video width="360" height="290" controls muted>
+                <source src="E.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter E:</h2>
+                <canvas id="canvas4" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"> <button onclick="recognizeAndCompare4()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas4.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result: </h1><span id='result4'></span></div>
+        <div id="ans4"></div>
+        <input type="hidden" id="letterToCompare4" value="E">
+        <label for="letterInputE">Enter Letter E:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputE" placeholder="Write the letter E with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('E')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('E')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredE" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                <source src="F.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter F:</h2>
+                <canvas id="canvas5" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare5()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas5.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result5'></span></div>
+        <div id="ans5"></div>
+        <input type="hidden" id="letterToCompare5" value="F">
+        <label for="letterInputF">Enter Letter F:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputF" placeholder="Write the letter F with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('F')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('F')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredF" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container"><video width="360" height="290" controls muted>
+                <source src="G.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter G:</h2>
+                <canvas id="canvas6" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare6()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas6.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result6'></span></div>
+        <div id="ans6"></div>
+        <input type="hidden" id="letterToCompare6" value="G">
+        <label for="letterInputG">Enter Letter G:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputG" placeholder="Write the letter G with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('G')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('G')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredG" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container"><video width="360" height="290" controls muted>
+                <source src="H.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter H:</h2>
+                <canvas id="canvas7" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare7()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas7.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result7'></span></div>
+        <div id="ans7"></div>
+        <input type="hidden" id="letterToCompare7" value="H">
+        <label for="letterInputH">Enter Letter H:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputH" placeholder="Write the letter H with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('H')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('H')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredH" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                    <source src="I.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter I:</h2>
+                <canvas id="canvas8" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare8()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas8.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result8'></span></div>
+        <div id="ans8"></div>
+        <input type="hidden" id="letterToCompare8" value="I">
+        <label for="letterInputI">Enter Letter I:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputI" placeholder="Write the letter I with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('I')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('I')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredI" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                    <source src="J.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter J:</h2>
+                <canvas id="canvas9" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare9()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas9.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result9'></span></div>
+        <div id="ans9"></div>
+        <input type="hidden" id="letterToCompare9" value="J">
+        <label for="letterInputJ">Enter Letter J:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputJ" placeholder="Write the letter J with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('J')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('J')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredJ" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                <source src="K.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter K:</h2>
+                <canvas id="canvas10" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare10()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas10.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result10'></span></div>
+        <div id="ans10"></div>
+        <input type="hidden" id="letterToCompare10" value="K">
+        <label for="letterInputK">Enter Letter K:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputK" placeholder="Write the letter K with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('K')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('K')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredK" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                    <source src="L.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter L:</h2>
+                <canvas id="canvas11" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare11()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas11.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result11'></span></div>
+        <div id="ans11"></div>
+        <input type="hidden" id="letterToCompare11" value="L">
+        <label for="letterInputL">Enter Letter L:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputL" placeholder="Write the letter L with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('L')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('L')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredL" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                <source src="M.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter M:</h2>
+                <canvas id="canvas12" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare12()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas12.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result12'></span></div>
+        <div id="ans12"></div>
+        <input type="hidden" id="letterToCompare12" value="M">
+        <label for="letterInputM">Enter Letter M:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputM" placeholder="Write the letter M with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('M')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('M')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredM" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                <source src="N.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter N:</h2>
+                <canvas id="canvas13" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare13()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas13.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result13'></span></div>
+        <div id="ans13"></div>
+        <input type="hidden" id="letterToCompare13" value="N">
+        <label for="letterInputN">Enter Letter N:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputN" placeholder="Write the letter N with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('N')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('N')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredN" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                    <source src="O.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter O:</h2>
+                <canvas id="canvas14" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare14()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas14.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result14'></span></div>
+        <div id="ans14"></div>
+        <input type="hidden" id="letterToCompare14" value="O">
+        <label for="letterInputO">Enter Letter O:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputO" placeholder="Write the letter O with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('O')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('O')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredO" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                    <source src="P.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter P:</h2>
+                <canvas id="canvas15" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare15()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas15.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result15'></span></div>
+        <div id="ans15"></div>
+        <input type="hidden" id="letterToCompare15" value="P">
+        <label for="letterInputP">Enter Letter P:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputP" placeholder="Write the letter P with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('P')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('P')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredP" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="subcontainer">
+                <video width="360" height="290" controls muted>
+                    <source src="Q.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter Q:</h2>
+                <canvas id="canvas16" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare16()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas16.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result16'></span></div>
+        <div id="ans16"></div>
+        <input type="hidden" id="letterToCompare16" value="Q">
+        <label for="letterInputQ">Enter Letter Q:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputQ" placeholder="Write the letter Q with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('Q')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('Q')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredQ" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                <source src="R.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter R:</h2>
+                <canvas id="canvas17" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare17()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas17.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result17'></span></div>
+        <div id="ans17"></div>
+        <input type="hidden" id="letterToCompare17" value="R">
+        <label for="letterInputR">Enter Letter R:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputR" placeholder="Write the letter R with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('R')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('R')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredR" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                    <source src="S.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter S:</h2>
+                <canvas id="canvas18" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare18()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas18.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result18'></span></div>
+        <div id="ans18"></div>
+        <input type="hidden" id="letterToCompare18" value="S">
+        <label for="letterInputS">Enter Letter S:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputS" placeholder="Write the letter S with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('S')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('S')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredS" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-contaner">
+                <video width="360" height="290" controls muted>
+                <source src="T.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter T:</h2>
+                <canvas id="canvas19" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare19()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas19.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result19'></span></div>
+        <div id="ans19"></div>
+        <input type="hidden" id="letterToCompare19" value="T">
+        <label for="letterInputT">Enter Letter T:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputT" placeholder="Write the letter T with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('T')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('T')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredT" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                <source src="U.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter U:</h2>
+                <canvas id="canvas20" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare20()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas20.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result20'></span></div>
+        <div id="ans20"></div>
+        <input type="hidden" id="letterToCompare20" value="U">
+        <label for="letterInputU">Enter Letter U:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputU" placeholder="Write the letter U with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('U')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('U')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredU" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                <source src="V.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter V:</h2>
+                <canvas id="canvas21" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare21()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas21.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result21'></span></div>
+        <div id="ans21"></div>
+        <input type="hidden" id="letterToCompare21" value="V">
+        <label for="letterInputV">Enter Letter V:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputV" placeholder="Write the letter V with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('V')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('V')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredV" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                    <source src="W.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter W:</h2>
+                <canvas id="canvas22" wwidth="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare22()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas22.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result22'></span></div>
+        <div id="ans22"></div>
+        <input type="hidden" id="letterToCompare22" value="W">
+        <label for="letterInputW">Enter Letter W:</label>
+        <div class=" main-container">
+            <div class="sub-container"><input type="text" id="letterInputW" placeholder="Write the letter W with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('W')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('W')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredW" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                    <source src="X.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter X:</h2>
+                <canvas id="canvas23" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare23()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas23.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result23'></span></div>
+        <div id="ans23"></div>
+        <input type="hidden" id="letterToCompare23" value="X">
+        <label for="letterInputX">Enter Letter X:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputX" placeholder="Write the letter X with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('X')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('X')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredX" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                    <source src="Y.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter Y:</h2>
+                <canvas id="canvas24" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare24()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas24.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1><span id='result24'></span>
+        </div>
+        <div id="ans24"></div>
+        <input type="hidden" id="letterToCompare24" value="Y">
+        <label for="letterInputY">Enter Letter Y:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputY" placeholder="Write the letter Y with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('Y')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('Y')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredY" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <div class="writing-practice">
+        <div class="main-container">
+            <div class="sub-container">
+                <video width="360" height="290" controls muted>
+                <source src="Z.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="sub-container">
+                <h2>Write the Letter Z:</h2>
+                <canvas id="canvas25" width="270" height="270" style="border: 2px solid; cursor: crosshair;"></canvas>
+            </div>
+        </div>
+        <div class="main-container">
+            <div class="sub-container"><button onclick="recognizeAndCompare25()">Recognize and Compare</button></div>
+            <div class="sub-container"><button onclick="canvas25.erase()">Erase</button></div>
+        </div>
+        <div>
+            <h1>Result:</h1> <span id='result25'></span></div>
+        <div id="ans25"></div>
+        <input type="hidden" id="letterToCompare25" value="Z">
+        <label for="letterInputZ">Enter Letter Z:</label>
+        <div class="main-container">
+            <div class="sub-container"><input type="text" id="letterInputZ" placeholder="Write the letter Z with your mouse"></div>
+            <div class="sub-container"><button onclick="checkEnteredLetter('Z')">Check Entered Letter</button></div>
+            <div class="sub-container"><button onclick="speakLetter('Z')">Listen</button></div>
+            <div class="sub-container"><label><input type="checkbox" id="correctCheckEnteredZ" disabled>Correct (Entered)?</label></div>
+        </div>
+    </div>
+    <button onclick="nextLetter()" style="width: 100px; height: 50px;"><h1>Next</h1></button>
+    <script src="script.js"></script>
+    <script type="text/javascript" src="handwriting.canvas.js"></script>
+    <script type="text/javascript" src="JS.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,518 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Letter Tracing Game</title>
+    <style>
+      body {
+        width: 350px;
+        margin: 10px;
+      }
+      .main {
+        background-color: #fcffea;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .canvas-container {
+        position: relative;
+        width: 330px;
+        height: 300px;
+      }
+
+      .canvas {
+        position: absolute;
+        border: 1px solid black;
+      }
+
+      #buttonContainer {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .div {
+        background-color: #fcffea;
+        display: flex;
+        max-width: 237px;
+        padding-top: 23px;
+        flex-direction: column;
+        font-weight: 400;
+        white-space: nowrap;
+      }
+      .div-3 {
+        color: var(--Blue, rgba(7, 11, 243, 0.8));
+        text-align: center;
+        align-self: center;
+        font: 35px Helvetica, sans-serif;
+        font-weight: bolder;
+      }
+      .div-4 {
+        color: var(--Red, rgba(250, 4, 5, 0.8));
+        text-align: center;
+        font-family: Koulen, sans-serif;
+        margin-top: 10px;
+      }
+      .div-5 {
+        color: var(--Red, rgba(250, 4, 5, 0.8));
+        text-align: center;
+        font-family: Koulen, sans-serif;
+        letter-spacing: 4.8px;
+        margin-top: 7px;
+        margin-bottom: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="div-3">M</div>
+      <div class="div-4">BEAT THE MONKEY TO WIN THE RACE</div>
+      <div class="div-5">REMEMBER THE PATH</div>
+      <div class="canvas-container" id="canvas-container">
+        <canvas
+          class="canvas"
+          id="referenceCanvas"
+          width="300"
+          height="300"
+        ></canvas>
+        <canvas
+          class="canvas"
+          id="animationCanvas"
+          width="300"
+          height="300"
+        ></canvas>
+        <canvas
+          class="canvas"
+          id="drawingCanvas"
+          width="300"
+          height="300"
+        ></canvas>
+      </div>
+      <div id="buttonContainer">
+        <button onclick="checkSimilarity()">Check Similarity</button>
+        <p id="result"></p>
+      </div>
+    </div>
+
+    <script>
+      const referenceCanvas = document.getElementById("referenceCanvas");
+      const referenceCtx = referenceCanvas.getContext("2d");
+      const animationCanvas = document.getElementById("animationCanvas");
+      const animationCtx = animationCanvas.getContext("2d");
+      const drawingCanvas = document.getElementById("drawingCanvas");
+      const drawingCtx = drawingCanvas.getContext("2d");
+      let isDrawing = false;
+      let tracedPath = [];
+      let posX = 100;
+      let posY = 200;
+      let animationSpeed = 1;
+
+      // Draw M-shaped path on the reference canvas
+      drawMPath(referenceCtx);
+
+      // Event listeners for drawing canvas
+      drawingCanvas.addEventListener("mousedown", startDrawing);
+      drawingCanvas.addEventListener("mousemove", draw);
+      drawingCanvas.addEventListener("mouseup", stopDrawing);
+      drawingCanvas.addEventListener("mouseout", stopDrawing);
+
+      function startDrawing(event) {
+        isDrawing = true;
+        draw(event);
+      }
+
+      function draw(event) {
+        if (!isDrawing) return;
+
+        const x = event.clientX - drawingCanvas.getBoundingClientRect().left;
+        const y = event.clientY - drawingCanvas.getBoundingClientRect().top;
+
+        tracedPath.push({ x, y });
+
+        drawingCtx.lineWidth = 10; // Increased line width for thicker brush
+        drawingCtx.lineCap = "round";
+        drawingCtx.strokeStyle = "black";
+        drawingCtx.lineTo(x, y);
+        drawingCtx.stroke();
+        drawingCtx.beginPath();
+        drawingCtx.moveTo(x, y);
+      }
+
+      function stopDrawing() {
+        isDrawing = false;
+        drawingCtx.beginPath();
+      }
+
+      function checkSimilarity() {
+        const similarity = calculateSimilarity(tracedPath);
+        const resultElement = document.getElementById("result");
+        resultElement.textContent = `Similarity: ${similarity}%`;
+      }
+
+      function calculateSimilarity(tracedPath) {
+        const referencePath = [
+          { x: 100, y: 200 },
+          { x: 120, y: 100 },
+          { x: 160, y: 160 },
+          { x: 200, y: 100 },
+          { x: 220, y: 200 },
+        ];
+
+        const minLength = Math.min(tracedPath.length, referencePath.length);
+        let similarity = 0;
+
+        for (let i = 0; i < minLength; i++) {
+          const tracedPoint = tracedPath[i];
+          const referencePoint = referencePath[i];
+
+          const distance = Math.sqrt(
+            Math.pow(tracedPoint.x - referencePoint.x, 2) +
+              Math.pow(tracedPoint.y - referencePoint.y, 2)
+          );
+
+          similarity += 100 - distance / 2;
+        }
+
+        similarity = similarity / minLength;
+        return Math.floor(similarity);
+      }
+
+      // Draw M-shaped path on the reference canvas
+      function drawMPath(ctx) {
+        ctx.beginPath();
+        ctx.moveTo(100, 200); // Start at point (100, 200)
+        ctx.lineTo(120, 100); // Draw line to point (120, 100)
+        ctx.lineTo(160, 160); // Draw line to point (160, 160)
+        ctx.lineTo(200, 100); // Draw line to point (200, 100)
+        ctx.lineTo(220, 200); // Draw line to point (220, 200)
+        ctx.strokeStyle = "rgba(0, 0, 0, 0.1)"; // Set stroke color with opacity
+        ctx.stroke(); // Draw the path with opacity
+      }
+
+      // Animation loop for the moving object
+      function animate() {
+        requestAnimationFrame(animate);
+
+        // Clear animation canvas
+        animationCtx.clearRect(
+          0,
+          0,
+          animationCanvas.width,
+          animationCanvas.height
+        );
+
+        // Draw M-shaped path
+        drawMPath(animationCtx);
+
+        // Draw animated circle
+        animationCtx.beginPath();
+        animationCtx.arc(posX, posY, 10, 0, Math.PI * 2);
+        animationCtx.fillStyle = "red";
+        animationCtx.fill();
+
+        // Update circle position for animation
+        if (posX < 120) {
+          posX += animationSpeed; // Move horizontally towards (120, 100)
+          posY -= animationSpeed * 4; // Move vertically up by 4 units
+        } else if (posX < 160) {
+          posX += animationSpeed; // Move horizontally towards (160, 160)
+          posY += animationSpeed; // Move vertically down by 1 unit
+        } else if (posX < 200) {
+          posX += animationSpeed; // Move horizontally towards (200, 100)
+          posY -= animationSpeed; // Move vertically up by 1 unit
+        } else if (posX < 220) {
+          posX += animationSpeed; // Move horizontally towards (220, 200)
+          posY += animationSpeed * 4; // Move vertically down by 4 units
+        } else {
+          // Reset position when animation completes
+          posX = 100;
+          posY = 200;
+        }
+      }
+
+      // Start animation
+      setTimeout(() => {
+        animate();
+      }, 1000); // Delay animation start by 1 second
+
+      // Reset animation after completion
+      animationCanvas.addEventListener("animationend", () => {
+        posX = 100;
+        posY = 200;
+        setTimeout(() => {
+          animate();
+        }, 7000); // Delay animation start by 1 second
+      });
+    </script>
+  </body>
+</html>
+
+
+  -->
+
+
+
+  
+ 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Letter M</title>
+    <style>
+      body {
+        width: 350px;
+        margin: 10px;
+      }
+      .main {
+        background-color: #fcffea;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+
+      .canvas-container {
+        position: relative;
+        width: 330px;
+        height: 300px;
+      }
+
+      .canvas {
+        position: absolute;
+        border: 1px solid black;
+      }
+
+      #buttonContainer {
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .div {
+        background-color: #fcffea;
+        display: flex;
+        max-width: 237px;
+        padding-top: 23px;
+        flex-direction: column;
+        font-weight: 400;
+        white-space: nowrap;
+      }
+      .div-3 {
+        color: var(--Blue, rgba(7, 11, 243, 0.8));
+        text-align: center;
+        align-self: center;
+        font: 35px Helvetica, sans-serif;
+        font-weight: bolder;
+      }
+      .div-4 {
+        color: var(--Red, rgba(250, 4, 5, 0.8));
+        text-align: center;
+        font-family: Koulen, sans-serif;
+        margin-top: 10px;
+      }
+      .div-5 {
+        color: var(--Red, rgba(250, 4, 5, 0.8));
+        text-align: center;
+        font-family: Koulen, sans-serif;
+        letter-spacing: 4.8px;
+        margin-top: 7px;
+        margin-bottom: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="div-3">M</div>
+      <div class="div-4">BEAT THE MONKEY TO WIN THE RACE</div>
+      <div class="div-5">REMEMBER THE PATH</div>
+      <div class="canvas-container" id="canvas-container">
+        <canvas
+          class="canvas"
+          id="referenceCanvas"
+          width="300"
+          height="300"
+        ></canvas>
+        <canvas
+          class="canvas"
+          id="animationCanvas"
+          width="300"
+          height="300"
+        ></canvas>
+        <canvas
+          class="canvas"
+          id="drawingCanvas"
+          width="300"
+          height="300"
+        ></canvas>
+      </div>
+      <div id="buttonContainer">
+        <p id="result"></p>
+      </div>
+    </div>
+
+
+    <script>
+      const MIN_POINTS_FOR_SIMILARITY_CHECK = 10;
+
+
+      const referenceCanvas = document.getElementById("referenceCanvas");
+      const referenceCtx = referenceCanvas.getContext("2d");
+      const animationCanvas = document.getElementById("animationCanvas");
+      const animationCtx = animationCanvas.getContext("2d");
+      const drawingCanvas = document.getElementById("drawingCanvas");
+      const drawingCtx = drawingCanvas.getContext("2d");
+      let isDrawing = false;
+      let tracedPath = [];
+      let posX = 100;
+      let posY = 200;
+      let simCount = 0;
+      let animationSpeed = 7;
+    
+      // Draw M-shaped path on the reference canvas
+      drawMPath(referenceCtx);
+    
+      // Event listeners for drawing canvas
+      drawingCanvas.addEventListener("mousedown", startDrawing);
+      drawingCanvas.addEventListener("mousemove", draw);
+      drawingCanvas.addEventListener("mouseup", stopDrawing);
+      drawingCanvas.addEventListener("mouseout", stopDrawing);
+    
+      function startDrawing(event) {
+        isDrawing = true;
+        draw(event);
+      }
+    
+      function draw(event) {
+        if (!isDrawing) return;
+    
+        const x = event.clientX - drawingCanvas.getBoundingClientRect().left;
+        const y = event.clientY - drawingCanvas.getBoundingClientRect().top;
+    
+        tracedPath.push({ x, y });
+    
+        drawingCtx.lineWidth = 10; // Increased line width for thicker brush
+        drawingCtx.lineCap = "round";
+        drawingCtx.strokeStyle = "black";
+        drawingCtx.lineTo(x, y);
+        drawingCtx.stroke();
+        drawingCtx.beginPath();
+        drawingCtx.moveTo(x, y);
+    
+        // Check similarity only when enough points have been drawn
+        if (tracedPath.length >= MIN_POINTS_FOR_SIMILARITY_CHECK) {
+          const similarity = calculateSimilarity(tracedPath);
+          if (similarity > 60) {
+            console.log(similarity);
+            simCount++;
+            if (simCount == 1) {
+              alert("Congratulations!");
+            }
+          }
+        }
+      }
+    
+      function stopDrawing() {
+        isDrawing = false;
+        drawingCtx.beginPath();
+      }
+    
+      function calculateSimilarity(tracedPath) {
+        const referencePath = [
+          { x: 100, y: 200 },
+          { x: 120, y: 100 },
+          { x: 160, y: 160 },
+          { x: 200, y: 100 },
+          { x: 220, y: 200 },
+        ];
+    
+        const minLength = Math.min(tracedPath.length, referencePath.length);
+        let similarity = 0;
+    
+        for (let i = 0; i < minLength; i++) {
+          const tracedPoint = tracedPath[i];
+          const referencePoint = referencePath[i];
+    
+          const distance = Math.sqrt(
+            Math.pow(tracedPoint.x - referencePoint.x, 2) +
+              Math.pow(tracedPoint.y - referencePoint.y, 2)
+          );
+    
+          similarity += 100 - distance / 2;
+        }
+    
+        similarity = similarity / minLength;
+        return Math.floor(similarity);
+      }
+    
+      // Draw M-shaped path on the reference canvas
+      function drawMPath(ctx) {
+        ctx.beginPath();
+        ctx.moveTo(100, 200); // Start at point (100, 200)
+        ctx.lineTo(120, 100); // Draw line to point (120, 100)
+        ctx.lineTo(160, 160); // Draw line to point (160, 160)
+        ctx.lineTo(200, 100); // Draw line to point (200, 100)
+        ctx.lineTo(220, 200); // Draw line to point (220, 200)
+        ctx.strokeStyle = "rgba(0, 0, 0, 0.1)"; // Set stroke color with opacity
+        ctx.stroke(); // Draw the path with opacity
+      }
+    
+      // Animation loop for the moving object
+      function animate() {
+        requestAnimationFrame(animate);
+    
+        // Clear animation canvas
+        animationCtx.clearRect(
+          0,
+          0,
+          animationCanvas.width,
+          animationCanvas.height
+        );
+    
+        // Draw M-shaped path
+        drawMPath(animationCtx);
+    
+        // Draw animated circle
+        animationCtx.beginPath();
+        animationCtx.arc(posX, posY, 10, 0, Math.PI * 2);
+        animationCtx.fillStyle = "red";
+        animationCtx.fill();
+    
+        // Update circle position for animation
+        if (posX < 120) {
+          posX += animationSpeed; // Move horizontally towards (120, 100)
+          posY -= animationSpeed * 4; // Move vertically up by 4 units
+        } else if (posX < 160) {
+          posX += animationSpeed; // Move horizontally towards (160, 160)
+          posY += animationSpeed; // Move vertically down by 1 unit
+        } else if (posX < 200) {
+          posX += animationSpeed; // Move horizontally towards (200, 100)
+          posY -= animationSpeed; // Move vertically up by 1 unit
+        } else if (posX < 220) {
+          posX += animationSpeed; // Move horizontally towards (220, 200)
+          posY += animationSpeed * 4; // Move vertically down by 4 units
+        } else {
+          // Reset position when animation completes
+          posX = 100;
+          posY = 200;
+        }
+      }
+    
+      // Start animation after a delay to allow time for initialization
+      setTimeout(() => {
+        animate();
+      }, 1000); // Delay animation start by 1 second
+    </script>
+    
+
+
+  </body>
+</html> 
+
+
+
+

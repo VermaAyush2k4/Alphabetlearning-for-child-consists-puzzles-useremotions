@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/tsparticles/3.3.0/tsparticles.bundle.min.js"
+      integrity="sha512-peqlZu/SRKzh/wys/VOVL+F7OVG+boi1QmP++PbeTzmYe6kVu1UocLn6rxbB0DMvgbXGfXTp24wC3kFxKu/CQQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+    <!-- script -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/tsparticles@1.16.2/dist/tsparticles.min.js"
+      integrity="sha256-2Sly/Hf9UP7YBu6LEPpn/6rxMZR5EeGq89mBa4G5+YA="
+      crossorigin="anonymous"
+    ></script>
+    <div id="tsparticles"></div>
+    <header class="flex column" id="header">
+      <h2 class="title" id="title1" style="align-self: flex-start">
+        <span class="front-title">Alpha</span><span class="back-title">Go</span
+        ><span id="ring">
+          <svg
+            width="482"
+            height="141"
+            viewBox="0 0 482 141"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M477.037 23.8165C477.435 25.8225 476.972 28.4019 474.824 31.7408C472.663 35.1005 469.009 38.8737 463.75 42.9611C453.246 51.1253 437.15 59.9254 416.481 68.7831C375.214 86.4689 316.621 104.006 250.511 117.123C184.402 130.241 123.552 136.405 78.6586 135.816C56.174 135.52 37.9372 133.533 25.1114 129.998C18.6903 128.228 13.8725 126.136 10.5924 123.856C7.33267 121.59 5.9194 119.383 5.52135 117.377C5.1233 115.371 5.58683 112.792 7.73444 109.453C9.89546 106.093 13.5494 102.32 18.8084 98.2324C29.3127 90.0681 45.4089 81.2681 66.0774 72.4103C107.345 54.7246 165.938 37.1877 232.047 24.07C298.156 10.9523 359.006 4.78874 403.9 5.37791C426.385 5.67299 444.622 7.66057 457.447 11.1955C463.868 12.9653 468.686 15.0575 471.966 17.3375C475.226 19.6034 476.639 21.8104 477.037 23.8165Z"
+              stroke="url(#paint0_linear_1_29)"
+              stroke-width="9"
+            />
+            <defs>
+              <linearGradient
+                id="paint0_linear_1_29"
+                x1="250"
+                y1="70"
+                x2="250"
+                y2="100"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop offset="0.0001" stop-color="var(--darkred)" />
+                <stop offset="0.005" stop-color="var(--darkred)" />
+                <stop offset="1" stop-color="var(--darkred)" stop-opacity="0" />
+                <animateTransform
+                  attributeName="gradientTransform"
+                  type="rotate"
+                  from="0 200 70"
+                  to="360 200 70"
+                  dur="3s"
+                  repeatCount="indefinite"
+                />
+              </linearGradient>
+            </defs>
+          </svg>
+        </span>
+      </h2>
+      <h4 class="title" id="title2" style="align-self: center; padding: 0.5rem">
+        learn with Passion!!
+      </h4>
+    </header>
+
+    <main>
+      <canvas
+        id="confettiCanvas"
+        style="
+          width: 100%;
+          height: 100%;
+          position: fixed;
+          top: 0;
+          left: 0;
+          z-index: 0;
+          opacity: 0.5;
+        "
+      ></canvas>
+
+      <audio id="audio_tag" src="a.mp3"></audio>
+      <audio id="clap_tag" src="claps.mp3"></audio>
+      <audio id="fail_tag" src="lose.mp3"></audio>
+      <button
+        onclick="document.getElementById('audio_tag').play();"
+        id="button"
+        class="flex"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="sound">
+          <path
+            d="M8.25 15h-.586c-.395 0-.781-.16-1.061-.439l-2.414-2.414A.5.5 0 0 0 3.836 12H2.25c-.827 0-1.5-.673-1.5-1.5v-5c0-.827.673-1.5 1.5-1.5h1.586a.504.504 0 0 0 .354-.146L6.604 1.44c.279-.28.666-.44 1.06-.44h.586c.827 0 1.5.673 1.5 1.5v11c0 .827-.673 1.5-1.5 1.5zm-6-10a.5.5 0 0 0-.5.5v5c0 .275.225.5.5.5h1.586c.395 0 .781.16 1.061.439l2.414 2.414a.5.5 0 0 0 .353.147h.586c.275 0 .5-.225.5-.5v-11a.5.5 0 0 0-.5-.5h-.586a.5.5 0 0 0-.353.146L4.896 4.561A1.51 1.51 0 0 1 3.836 5H2.25zM11.25 10.699a.501.501 0 0 1-.339-.868 2.471 2.471 0 0 0 0-3.663.5.5 0 0 1 .678-.736c.731.675 1.135 1.587 1.135 2.568s-.403 1.893-1.135 2.567a.501.501 0 0 1-.339.132z"
+          ></path>
+          <path
+            d="M11.25 13.063a.5.5 0 0 1-.203-.957c1.626-.723 2.677-2.335 2.677-4.106s-1.051-3.383-2.677-4.106a.5.5 0 0 1 .406-.914c1.986.883 3.271 2.854 3.271 5.02s-1.284 4.137-3.271 5.021a.503.503 0 0 1-.203.042z"
+          ></path>
+        </svg>
+        <span></span>
+      </button>
+
+      <div id="info" class="card flex column">
+        PenSize <span id="lineWidth">6</span>
+        <input
+          style="
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(
+              to right,
+              #4caf50 0%,
+              #4caf50 10%,
+              #fff 10%,
+              #fff 90%,
+              #4caf50 90%,
+              #4caf50 100%
+            );
+            border-radius: 10px;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: 0.2s;
+            transition: opacity 0.2s;
+          "
+          type="range"
+          id="penSize"
+          min="6"
+          max="30"
+          value="6"
+        />
+        <br />
+        <canvas id="c" width="500" height="300"></canvas>
+      </div>
+
+      <div id="facts" class="card flex column">
+        <h4 style="color: var(--bg)">Let's Draw</h4>
+        <p id="facts-text" class="info-text">
+          <img
+            src="letter.gif"
+            style="
+              position: absolute;
+              height: 100px;
+              width: 100px;
+              border-radius: 20%;
+              left: 14rem;
+            "
+            alt=""
+          />
+        </p>
+
+        <span class="circle-wrap">
+          <p id="next" class="next">
+            <span
+              style="
+                display: flex;
+                width: 300px;
+                align-items: center;
+                justify-content: start;
+                top: 2rem;
+              "
+            >
+              <button
+                style="
+                  border: none;
+                  color: white;
+                  padding: 10px 20px;
+                  text-align: center;
+                  text-decoration: none;
+                  display: inline-block;
+                  font-size: 16px;
+                  margin-right: 10px;
+                  border-radius: 500px;
+                  cursor: pointer;
+                "
+                onclick="canvas.recognize();"
+              >
+                <span class="arr1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    id="check"
+                  >
+                    <path fill="none" d="M0 0h24v24H0V0z"></path>
+                    <path
+                      d="M9 16.17L5.53 12.7c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.18 4.18c.39.39 1.02.39 1.41 0L20.29 7.71c.39-.39.39-1.02 0-1.41-.39-.39-1.02-.39-1.41 0L9 16.17z"
+                    ></path>
+                  </svg> </span
+                >
+              </button>
+              <button
+                style="
+                  border: none;
+                  color: transparent;
+                  text-align: center;
+                  text-decoration: none;
+                  display: inline-block;
+                  font-size: 10px;
+                  margin-right: 10px;
+                  border-radius: 500px;
+                  cursor: pointer;
+                
+                "
+                onclick="canvas.erase();"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="48"
+                  height="48"
+                  data-name="Layer 1"
+                  id="erase"
+                >
+                  <path
+                    d="m29.66 10.78.14.12 9.07 9.1a2.63 2.63 0 0 1 0 3.69L27.42 35.25h8v2.62H15.3l-6.17-6.21a2.64 2.64 0 0 1 0-3.7L26.08 10.9a2.63 2.63 0 0 1 3.58-.12ZM13.89 26.89 11 29.81l5.4 5.44h5.86l-8.36-8.36Zm14.05-14.14L15.74 25l9.09 9.1L37 21.88l-9.07-9.13Z"
+                  ></path>
+                </svg>
+              </button>
+            </span>
+          </p>
+          <span id="lightred" class="circle"></span>
+          <span id="darkred" class="circle"></span>
+        </span>
+      </div>
+    </main>
+
+    <div id="spinner" class="flex column">
+      <h5>
+        <img
+          id="skill1"
+          class="skill"
+          style="
+            height: 100px;
+            width: 100px;
+            border-radius: 100%;
+            color: bisque;
+          "
+          src="draw.gif"
+          alt=""
+        />
+      </h5>
+      <h5>
+        <img
+          id="skill2"
+          class="skill"
+          style="
+            height: 200px;
+            width: 200px;
+            border-radius: 100%;
+            color: transparent;
+          "
+          src="apple.gif"
+          alt=""
+        />
+      </h5>
+      <h5>
+        <img
+          id="skill3"
+          class="skill"
+          style="
+            height: 200px;
+            width: 200px;
+            border-radius: 100%;
+            color: bisque;
+          "
+          src="a.gif"
+          alt=""
+        />
+      </h5>
+      <h5>
+        <img
+          id="skill4"
+          class="skill"
+          style="
+            height: 150px;
+            width: 150px;
+            border-radius: 100%;
+            color: bisque;
+          "
+          src="ant.gif"
+          alt=""
+        />
+      </h5>
+    </div>
+
+    <div id="robot" class="robo-wrap flex column">
+      <div id="head"></div>
+      <div id="body">
+        <div class="body"></div>
+        <div id="armL" class="arm arm1"></div>
+        <div id="armR" class="arm arm2"></div>
+      </div>
+      <div class="leg-wrap">
+        <div id="legL" class="leg leg1"></div>
+        <div id="legR" class="leg leg2"></div>
+      </div>
+    </div>
+
+    <div id="box"></div>
+
+    <button id="skip" class="next">
+      Skip <span class="arr1">></span><span class="arr2">></span>
+    </button>
+    <script src="hand.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

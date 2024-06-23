@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Letter B</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        /* width: 350px;
+        height: 100vh; */
+        margin: 10px;
+        color: #333; /* Default text color */
+        background-color: #fcffea;
+        height: 720px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        width: 300px;
+        /* height: 500px; */
+        height: 680px;
+        margin-top: 20px;
+        background-color: #fcffea;
+        text-align: center;
+      }
+
+      .instructions {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: var(--Blue, rgba(7, 11, 243, 0.8));
+      }
+
+      .huge-letter {
+        font-size: 80px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: var(--Blue, rgba(7, 11, 243, 0.8));
+      }
+
+      .box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 40px;
+        margin-top: 30px;
+      }
+
+      .letter {
+        width: 40px;
+        height: 40px;
+        background-color: var(--Blue, rgba(207, 208, 253, 0.8));
+        color: var(--Blue, rgba(7, 11, 243, 0.8));
+        display: flex;
+        justify-content: center;
+        font-weight: bold;
+        align-items: center;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .dropzone {
+        width: 100px;
+        height: 100px;
+        border: 7px solid blue;
+        color: var(--Blue, rgba(7, 11, 243, 0.8));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        margin-bottom: 10px;
+      }
+
+      .error-msg {
+        color: red;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .back-btn {
+        position: relative; /* Position at the bottom */
+        width: 80px;
+        height: 40px;
+        background-color: var(--Blue, rgba(243, 7, 7, 0.7));
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="instructions">
+        <p>
+          Drag the letters into the drop zone. You can only drag the letter 'B'
+          into the drop zone.
+        </p>
+      </div>
+      <div class="huge-letter" id="hugeLetter">B</div>
+      <div class="box"></div>
+      <div class="dropzone">Drop Here</div>
+      <div class="error-msg" id="errorMsg"></div>
+      <button class="back-btn" onclick="window.location.href = 'choose_alpha.html';">Back</button>
+    </div>
+
+    <script>
+      const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // All letters
+      const box = document.querySelector(".box");
+      const dropzone = document.querySelector(".dropzone");
+      const errorMsg = document.getElementById("errorMsg");
+      const hugeLetter = document.getElementById("hugeLetter");
+
+      let total_b = 1;
+
+      // Generate 14 random letters
+      const randomLetters = generateRandomLetters(14);
+
+      // Add 'B' to the array
+      randomLetters.push("B");
+
+      // Shuffle the array
+      shuffleArray(randomLetters);
+
+      console.log(" total_b: ", total_b);
+
+      // Add letters to the box
+      randomLetters.forEach((letter) => {
+        const div = document.createElement("div");
+        div.textContent = letter;
+        div.classList.add("letter");
+        div.draggable = true;
+        div.addEventListener("dragstart", dragStart);
+        box.appendChild(div);
+      });
+
+      let bCount = 0;
+
+      //box.addEventListener("dragend", countB);
+
+      dropzone.addEventListener("dragover", dragOver);
+      dropzone.addEventListener("drop", drop);
+
+      function dragStart(event) {
+        event.dataTransfer.setData("text/plain", event.target.textContent);
+        event.dataTransfer.setData("text/id", event.target.id); // Set the ID of the dragged element
+      }
+
+      function dragOver(event) {
+        event.preventDefault();
+      }
+
+      function drop(event) {
+        event.preventDefault();
+        const draggedLetter = event.dataTransfer.getData("text/plain");
+
+        if (draggedLetter.toUpperCase() === "B") {
+          bCount++;
+          randomLetters.splice(randomLetters.indexOf(draggedLetter), 1); // Remove the dragged letter from randomLetters array
+          if (this.innerText.includes("B")) {
+            this.innerText += draggedLetter; // Concatenate the dragged letter with existing B's
+          } else {
+            this.innerText = draggedLetter; // Display the dragged letter in the drop zone
+          }
+          errorMsg.innerText = ""; // Clear error message
+
+           // Remove one 'B' letter from randomLetters array
+           const draggedLetterIndex = randomLetters.indexOf(draggedLetter);
+          if (draggedLetterIndex !== -1) {
+            randomLetters.splice(draggedLetterIndex, 1);
+          } else {
+            console.error(
+              "The dragged letter was not found in the randomLetters array."
+            );
+          }
+
+          // Clear the current letters displayed in the UI
+          box.innerHTML = "";
+
+          randomLetters.push("B"); // Add 'B' to the array
+          // Add letters to the box
+          randomLetters.forEach((letter) => {
+            const div = document.createElement("div");
+            div.textContent = letter;
+            div.classList.add("letter");
+            div.draggable = true;
+            div.addEventListener("dragstart", dragStart);
+            box.appendChild(div);
+          });
+
+          // Check if all B's are dragged
+          if (bCount === total_b) {
+            // Redirect to a different page
+            window.location.href = "success_B.html"; // Change this to the URL of your success page
+          }
+        } else {
+          errorMsg.innerText =
+            'Only the letter "B" is allowed in the drop zone.';
+        }
+      }
+
+      function generateRandomLetters(count) {
+        const result = [];
+        for (let i = 0; i < count; i++) {
+          const randomIndex = Math.floor(Math.random() * letters.length);
+          result.push(letters[randomIndex]);
+          if (letters[randomIndex] === "B") {
+            total_b++; // Increment total_b when 'B' is encountered
+          }
+        }
+        return result;
+      }
+
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+
+      function countB() {
+        bCount = 0; // Reset the count to zero
+        const letters = box.querySelectorAll(".letter");
+        letters.forEach((letter) => {
+          if (letter.textContent === "B") {
+            bCount++;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

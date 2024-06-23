@@ -1,0 +1,140 @@
+/* CSS Styles */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('Alphabet_bg.jpg');
+    background-color: #f0f0f0; /* Light gray background color */
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+header h1 {
+    margin: 0;
+}
+
+section {
+    text-align: center;
+    margin-top: 20px; /* Add some top margin */
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px; /* Add some bottom margin */
+}
+
+.writing-practice {
+    background-color: #ffd700; /* Gold background color */
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    position: relative;
+}
+
+canvas {
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    display: block;
+    margin: 0 auto;
+    background-color: #fff; /* White canvas background color */
+}
+
+button {
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+    background-color: #f61a0a;
+    font-size: 14px;
+}
+
+button:hover{
+    background-color: lightcoral;
+    font-size: 15px;
+}
+#prevBtn {
+    background-color: blue; /* Orange background for previous button */
+}
+
+#nextBtn {
+    background-color: blue; /* Orange background for next button */
+}
+
+#prevBtn:hover{
+    background-color: slateblue;
+    font-size: 15px;
+}
+#nextBtn:hover{
+    background-color: slateblue;
+    font-size: 16px;
+}
+.image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border: 1px solid #000;
+    margin: 0 10px;
+    border-radius: 50%; /* Circular border for images */
+}
+
+.nav-buttons {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    background-color: greenyellow;
+}
+
+/* Define CSS classes for different completion states */
+.perfect {
+    color: green; /* Change color to green for perfect completion */
+}
+
+.partial {
+    color: blue; /* Change color to blue for partial completion */
+}
+
+.try-again {
+    color: red; /* Change color to red for incomplete */
+}
+
+#submitBtn{
+    background-color: green;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#submitBtn:hover{
+    background-color: lawngreen;
+    font-size: 17px;
+}
+
+#completionMessage{
+    background-color: bisque;
+    font-size: 20px;
+    padding: 8px;
+}
+
+.image-caption {
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 5px;
+    font-size: 22px;
+}

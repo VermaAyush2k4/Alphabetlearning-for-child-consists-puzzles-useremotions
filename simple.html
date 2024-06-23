@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style> 
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('home_bg.jpg');
+            background-size: cover; /* Cover the entire page */
+            background-repeat: no-repeat; /* Prevent image from repeating */
+            background-attachment: fixed; /* Keep the background image fixed while scrolling */
+            background-position: center; /* Center the background image */
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background-color: skyblue;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            width: 80%;
+            margin: auto; 
+        }
+
+        /* Styling the button */
+        button {
+            background-color: red; /* Green */
+            border: solid black;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 24px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for the button */
+        button:hover {
+            background-color: #fe5f0a; /* Darker Green */
+            font-size: 26px;
+        }
+
+        /* Styling the welcome message */
+        p {
+            text-align: left; /* Align left */
+            font-size: 30px; /* Larger font size */
+            max-width: 50%; /* Limiting width */
+            margin: 50px auto; /* Center horizontally */
+            padding: 20px; /* Add padding */
+            font-family: sans-serif;
+            color: rgb(60, 16, 16);
+            background-color: rgba(173, 184, 80, 0.7); /* Semi-transparent background */
+            animation: fadeIn 2s forwards; /* Apply fadeIn animation */
+            animation-delay: 1s; /* Delay the animation */
+        }
+
+        /* Button container styling */
+        #div_btn {
+            position: fixed;
+            bottom: 180px; /* 20px from bottom */
+            right: 250px; /* 20px from right */
+            padding: 15px;
+            font-size: x-large;
+        }
+
+        /* Keyframe animation for fading in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to Online Alphabet Learning</h1>
+    </header>
+
+    <div style="text-align: center;">
+        <p>Dear children, welcome to our online alphabet learning platform! Here, you can have fun while learning the ABCs. Click the button below to start practicing letter writing. Enjoy!</p>
+    </div>
+
+    <div id="div_btn">
+        <a href="main.html"><button>Let's Start <i class="fas fa-long-arrow-alt-right"></i> </button></a>
+    </div>
+
+</body>
+</html>

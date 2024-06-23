@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphatris</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          display: flex;
+          height: 730px;
+          margin: 5px;
+          background-color: #fcffea;
+          align-items: center;
+          justify-content: center;
+      }
+
+      .container {
+        width: fit-content;
+        height: 580px;
+        /* height: 500px; */
+        display: flex;
+        align-items: center;     
+        flex-direction: column;
+        position: relative; 
+      }
+
+      .play {
+        padding: 10px;
+        width: fit-content;
+        background-color: var(--Blue, rgba(243, 7, 7, 0.7));
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+      
+
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>Process</div>
+            <ul>
+                <li>Divide alphabets into set 5. For every iteration (try) the child would engage with all 5 activities for respective letter.</li>
+                <li>Once the child completes a single iteration, hand it a physical (paper) test or tracer to remember all the letters and it's associated terms.</li>
+                <li>Note down the observation. Repeat above steps for next set of 5 letters and so on for all 26.</li>
+                <li>Now compare observations after each set and mark down final observation 1 and result.</li>
+                <li>Rerun entire process for again 26 alphabets and mark down final observation 2. Compare with preview final observation and reach the conclusion.</li>
+            </ul>
+            <button class="play" onclick="window.location.href = 'home.html'">Home</button>
+    </div>
+    </div>
+</body>
+</html>

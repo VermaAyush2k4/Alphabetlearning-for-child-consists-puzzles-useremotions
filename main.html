@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-jKm7NMP+jCuRdZ8EMRBMlxF3cd6Zdxypq1IjyZmgueXfk7+wBsfBsbj4l1PuVz76Ll+JN2Nuh7crhEnvcRzP+g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <title>Choose Menu</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        .navbar {
+            background-color: white;
+            color: blue;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            font-style: italic;
+            font-family: cursive;
+            font-size: 34px;
+        }
+        
+        .navbar-menu {
+            list-style-type: none;
+            color: blue;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        
+        .navbar-menu li {
+            margin-left: 20px;
+        }
+        
+        .navbar-menu li a {
+            color: blue;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 23px;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-menu li a:hover {
+            color: #2980b9;
+        }
+        
+        .logout-btn {
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            background-color: #1f6cb4;
+        }
+        
+        .image-container {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .image-container img {
+            width: 40%;
+            height: 420px;
+            margin-bottom: 40px;
+            margin-left: 60px;
+            margin-right: 60px;
+            transition: transform 0.3s ease;
+        }
+        
+        .image-container img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a class="navbar-brand" href="#">ABC Fun Online</a>
+        <ul class="navbar-menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <button class="logout-btn" onclick="window.location.href='SignUpPage.html'">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+
+    <div class="image-container">
+        <img src="assets/module1.png" alt="Image 1" onclick="window.location.href='learnAlphabets.html'">
+        <img src="canva_draw.jpeg" alt="Image 2" onclick="window.location.href='Alphabet.html'">
+        <img src="assets/module2.png" alt="Image 3" onclick="window.location.href='index.html'">
+        <img src="alpha_game.jpeg" alt="Image 4" onclick="window.location.href='home.html'">
+    </div>
+
+</body>
+<script>
+    function logout() {
+        // Implement your logout logic here (e.g., send an AJAX request)
+        console.log("Logging out..."); // Placeholder for actual logout functionality
+    }
+</script>
+</html>

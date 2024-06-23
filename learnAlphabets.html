@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Alphabets</title>
+    <link rel="stylesheet" href="css/learnAlphabets.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <nav class="navbar">
+            <div class="navbar-left">
+                <a href="main.html" class="home-icon"><i class="material-icons md-24" style="font-size: 40px;">home</i></a>
+            </div>
+            <div class="navbar-right">
+                <button class="logout-btn" onclick="window.location.href='SignUpPage.html'">LOGOUT &nbsp;<i class="material-icons">exit_to_app</i> </button>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container">
+        <div class="alphabet-container">
+            <div class="image-container">
+                <img src="assets/A.jpg" id="image" alt="Apple Image">
+            </div>
+            <div class="letter-container" style="justify-content: center;">
+                <p id="letter" style="font-size: 120px; color: red;">A</p>
+            </div>
+        </div>
+        <div class="play-button">
+            <button onclick="speakText()"><i id="play-icon" class="material-icons">play_arrow</i></button> &nbsp;&nbsp;
+            <p id="text-to-speak" style="font-size: 25px;">A for Apple</p>
+        </div>
+
+        <div class="next-button">
+            <button onclick="next()"> NEXT <i class="material-icons">arrow_forward</i></button>
+        </div>
+        <div class="prev-button">
+            <button onclick="prev()"> PREVIOUS <i class="material-icons">arrow_back</i></button>
+        </div>
+    </div>
+
+
+</body>
+
+<script>
+    function speakText() {
+        var text = document.getElementById('text-to-speak').textContent;
+        var utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.50; // Increase speed by 50%
+        var icon = document.getElementById('play-icon');
+        icon.classList.remove('material-icons');
+        icon.classList.add('material-icons');
+        icon.textContent = 'pause';
+
+        speechSynthesis.speak(utterance);
+
+        utterance.onend = function() {
+            icon.classList.remove('material-icons-outlined');
+            icon.classList.add('material-icons');
+            icon.textContent = 'play_arrow';
+        };
+    }
+
+    let index = 0;
+    const images = ['assets/A.jpg', 'assets/B.jpg', 'assets/C.jpg', 'assets/D.jpg', 'assets/E.jpg', 'assets/Fish.jpg', 'assets/grapes.jpg', 'assets/house.jpg', 'assets/icecream.jpg', 'assets/joker.jpg', 'assets/kite.jpg', 'assets/lion.jpg', 'assets/monkey.jpg', 'assets/nest.jpg', 'assets/orange.jpg', 'assets/peacock.jpg', 'assets/queen.jpg', 'assets/rose.jpg', 'assets/ship.jpg', 'assets/tiger.jpg', 'assets/umbrella.jpg', 'assets/vase.jpg', 'assets/watch.jpg', 'assets/xylophone.jpg', 'assets/yak.jpg', 'assets/zebra.jpg'];
+    const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+    const descriptions = ['A for Apple', 'B for Banana', 'C for Car', 'D for Dog', 'E for Elephant', 'F for Fish', 'G for Grapes', 'H for House', 'I for Icecream', 'J for Joker', 'K for Kite', 'L for Lion', 'M for Monkey', 'N for Nest', 'O for Orange', 'P for Peacock', 'Q for Queen', 'R for Rose', 'S for Ship', 'T for Tiger', 'U for Umbrella', 'V for Vase', 'W for Watch', 'X for Xylophone', 'Y for Yak', 'Z for Zebra'];
+
+    function next() {
+        index = (index + 1) % images.length;
+        updateContent();
+    }
+
+    function prev() {
+        index = (index - 1 + images.length) % images.length;
+        updateContent();
+    }
+
+    function updateContent() {
+        const img = document.getElementById('image');
+        img.src = images[index];
+
+        document.getElementById('letter').innerHTML = letters[index];
+        const textToSpeak = document.getElementById('text-to-speak');
+        textToSpeak.textContent = descriptions[index];
+    }
+
+    function speakText() {
+        var text = document.getElementById('text-to-speak').textContent;
+        var utterance = new SpeechSynthesisUtterance(text);
+        // Adjust the rate (speed) here, for example:
+        utterance.rate = 0.5; // Increase speed by 50%
+
+        // Change icon to pause
+        var icon = document.getElementById('play-icon');
+        icon.classList.remove('material-icons');
+        icon.classList.add('material-icons');
+        icon.textContent = 'pause';
+
+        // Speech synthesis
+        speechSynthesis.speak(utterance);
+
+        // Event listener for speech end
+        utterance.onend = function() {
+            // Reset icon to play
+            icon.classList.remove('material-icons-outlined');
+            icon.classList.add('material-icons');
+            icon.textContent = 'play_arrow';
+        };
+    }
+</script>
+
+</script>
+
+</html>

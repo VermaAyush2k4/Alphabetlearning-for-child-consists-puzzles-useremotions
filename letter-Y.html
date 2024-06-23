@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Letter Y</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        height: 730px;
+        display: flex;
+        margin: 5px;
+        color: #333;
+        background-color: #fcffea;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        width: 300px;
+        margin-top: 10px;
+        background-color: #fcffea;
+        text-align: center;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+
+      .header {
+        font-size: 160px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        color: var(--Blue, rgba(255, 234, 2, 0.999));
+      }
+
+      .instructions {
+        margin-bottom: 20px;
+      }
+
+      .pairs {
+        margin-bottom: 10px;
+      }
+
+      .pair div {
+        display: inline-block;
+        margin-right: 10px;
+      }
+
+      .submit-btn {
+        margin-left: 5px;
+        padding: 7px;
+        width: fit-content;
+        background-color: var(--Blue, rgba(243, 7, 7, 0.7));
+        color: white;
+        font-weight: bold;
+        border: none;
+
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      input[type="text"] {
+        padding: 5px;
+        margin-top: 10px;
+        width: 150px;
+      }
+
+      .success-message {
+        font-size: 20px;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .next-btn {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        padding: 10px;
+        background-color: var(--Blue, rgba(243, 7, 7, 0.7));
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .back-btn {
+        position: relative; /* Position at the bottom */
+        width: 80px;
+        height: 40px;
+        background-color: var(--Blue, rgba(243, 7, 7, 0.7));
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">Y</div>
+      <div id="instructions" class="instructions">
+        Timer: <span id="timer">5s</span>
+      </div>
+      <button class="back-btn" onclick="window.location.href = 'choose_alpha.html';">Back</button>
+    </div>
+    <script>
+      window.addEventListener("load", function () {
+        var seconds = 5;
+        var timerInterval = setInterval(function () {
+          seconds--;
+          if (seconds <= 0) {
+            clearInterval(timerInterval);
+            removeInstructions();
+            removeHeaderY();
+            displayPairs();
+            removeBackButton();
+          } else {
+            document.getElementById("timer").textContent = seconds + "s";
+          }
+        }, 1000);
+      });
+
+      function removeBackButton() {
+        var backBtn = document.querySelector(".back-btn");
+        backBtn.parentNode.removeChild(backBtn);
+      }
+
+      function removeHeaderY() {
+        var header = document.querySelector(".header");
+        header.parentNode.removeChild(header);
+      }
+
+      function removeInstructions() {
+        var instructions = document.getElementById("instructions");
+        instructions.parentNode.removeChild(instructions);
+      }
+
+      function displayPairs() {
+        const pairs = [
+          { letter: "Y", color: "Yellow" },
+          { letter: "R", color: "Red" },
+          { letter: "B", color: "Blue" },
+          { letter: "G", color: "Green" },
+          { letter: "O", color: "Orange" },
+          { letter: "P", color: "Purple" },
+          { letter: "W", color: "White" },
+          { letter: "C", color: "Cyan" },
+          { letter: "M", color: "Magenta" },
+          { letter: "L", color: "Lime" },
+        ];
+
+        for (let i = pairs.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [pairs[i], pairs[j]] = [pairs[j], pairs[i]];
+        }
+
+        const pairsContainer = document.createElement("div");
+        pairsContainer.classList.add("pairs");
+        document.querySelector(".container").appendChild(pairsContainer);
+
+        pairs.forEach((pair) => {
+          const pairDiv = document.createElement("div");
+          pairDiv.classList.add("pair");
+          pairDiv.innerHTML = `<div>${pair.letter}</div><div style="background-color:${pair.color}; font-weight: bold; width:30px; height:30px; border-radius:50%; display:inline-block;"></div>`;
+          pairsContainer.appendChild(pairDiv);
+        });
+
+        const instructionText = document.createElement("div");
+        instructionText.textContent =
+          "Select the correct pair for the letter shown previously";
+        document.querySelector(".container").appendChild(instructionText);
+        const inputField = document.createElement("input");
+        inputField.setAttribute("type", "text");
+        inputField.setAttribute("placeholder", "Enter the letter: ");
+        document.querySelector(".container").appendChild(inputField);
+
+        const submitBtn = document.createElement("button");
+        submitBtn.classList.add("submit-btn");
+        submitBtn.textContent = "Submit";
+        submitBtn.onclick = function () {
+          const inputLetter = inputField.value.toUpperCase();
+          if (!inputLetter) return;
+
+          const selectedPair = pairs.find(
+            (pair) => pair.letter === inputLetter
+          );
+          if (!selectedPair) {
+            alert("Invalid selection! Please enter a valid letter.");
+          } else if (
+            selectedPair.letter === "Y" &&
+            selectedPair.color === "Yellow"
+          ) {
+            removeElements();
+            displaySuccessMessage();
+          } else {
+            alert("Incorrect selection! Please try again.");
+          }
+        };
+        document.querySelector(".container").appendChild(submitBtn);
+      }
+
+      function removeElements() {
+        const container = document.querySelector(".container");
+        container.innerHTML = ""; // Clear container content
+      }
+
+      function displaySuccessMessage() {
+        const container = document.querySelector(".container");
+
+        const successMessage = document.createElement("div");
+        successMessage.classList.add("success-message");
+        successMessage.textContent =
+          "Congratulations! You selected the correct pair.";
+        container.appendChild(successMessage);
+
+        const letterY = document.createElement("div");
+        letterY.classList.add("header");
+        letterY.textContent = "Y";
+        container.appendChild(letterY);
+
+        const yForYellowText = document.createElement("div");
+        yForYellowText.textContent = "for Yellow";
+        container.appendChild(yForYellowText);
+
+        const tryAgain = document.createElement("button");
+        const chooseAlphaBtn = document.createElement("button");
+        chooseAlphaBtn.classList.add("next-btn");
+        chooseAlphaBtn.textContent = "Choose Alphabet";
+        chooseAlphaBtn.onclick = function () {
+          window.location.href = "choose_alpha.html";
+        };
+        tryAgain.classList.add("next-btn");
+        tryAgain.textContent = "Try Again";
+        tryAgain.onclick = function () {
+          window.location.href = "letter-Y.html";
+        };
+        container.appendChild(tryAgain);
+        container.appendChild(chooseAlphaBtn);
+      }
+    </script>
+  </body>
+</html>

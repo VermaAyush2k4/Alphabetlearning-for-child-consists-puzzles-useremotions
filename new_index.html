@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Writing Practice</title>
+    <link rel="stylesheet" href="styles_R.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+      
+        <h1><a href="main.html"><i class="fas fa-home"></i></a> Letter Writing Practice </h1> 
+    </header>
+    <section>
+        <div class="writing-practice">
+            <h2 id="letterTitle">Write the Letter A:</h2>
+            <canvas id="drawingCanvas" width="400" height="275"></canvas>
+            <div>
+                <button id="prevBtn" onclick="previousLetter()"><i class="fas fa-chevron-left"></i> Previous</button>
+                <button id="submitBtn" onclick="checkCompletion()">Submit</button>
+                <button id="nextBtn" onclick="nextLetter()">Next <i class="fas fa-chevron-right"></i></button>
+                <div id="completionBox">
+                    <p id="completionMessage"></p>
+                </div>
+                <button onclick="resetCanvas()"><i class="fas fa-sync-alt"></i> Reset</button>
+                <input type="color" id="colorPicker" value="#000000" title="Select Color" style="margin-left: 10px;">
+                <input type="number" id="strokeWidth" value="8" min="1" max="20" title="Set Stroke Width" style="margin-left: 10px;">
+                <button onclick="speakLetter()"><i class="fas fa-volume-up"></i> Speak</button>
+            </div>
+            <div class="image-container">
+                <img src="" alt="Image" id="image">
+                <p class="image-caption" id="imageCaption"></p>
+            </div>
+            <div class="nav-buttons">
+                <!-- Navigation buttons for other functionalities if needed -->
+            </div>
+        </div>
+    </section>
+
+    <script src="script_R.js"></script>
+</body>
+</html>

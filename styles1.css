@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: url(/assets/paper.jpg);
+    background-color: yellowgreen;
+}
+
+.body {
+    display: flex;
+    align-items: center;
+    height: 70%;
+    justify-content: center;
+}
+
+div {
+    width: 360;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-wrap: wrap;
+}
+
+#container {
+    width: 200px;
+    height: 200px;
+}
+
+.line {
+    stroke: black;
+    stroke-width: 2;
+    fill: none;
+    stroke-dasharray: 0;
+    stroke-dashoffset: 0;
+}
+
+.main-container {
+    display: flex;
+    /* Use flexbox to arrange child divs horizontally */
+}
+
+.sub-container {
+    flex: 1;
+    /* Each sub-container takes equal space */
+    padding: 10px;
+    /* Add some padding for visual separation */
+    border: 1px solid #ccc;
+    /* Add border for visual separation */
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    max-width: 800px;
+    /* Limit the maximum width */
+}
+
+h2 {
+    color: #333;
+}
+
+h4 {
+    color: #333;
+}
+
+label,
+input,
+button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: center;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+input[type="checkbox"] {
+    transform: scale(0.8);
+    /* Reduce the size of the checkbox */
+}
+
+.writing-practice {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    /* Set the width for each letter section */
+    box-sizing: border-box;
+    /* Include padding and border in width calculation */
+}
+
+canvas {
+    border: 1px solid #000;
+    margin-bottom: 10px;
+    align-self: center;
+    border: 2px solid;
+    cursor: crosshair;
+}
+
+h1 {
+    align-items: center;
+}
