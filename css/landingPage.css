@@ -1,0 +1,145 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    background-color: white;
+    color: blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.brand {
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+    font-family: cursive;
+    font-size: 34px;
+}
+
+.buttons button {
+    margin-left: 10px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #0056b3;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.buttons button:hover {
+    background-color: #004080;
+}
+
+.material-symbols-outlined {
+    justify-content: center;
+    font-size: 50px;
+    color: blue
+    ;
+  font-variation-settings:
+  'FILL' 1,
+  'wght' 700,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 50px;
+}
+
+.left-container {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.right-container img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 45px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 25px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.signup-free-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.login-btn {
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.signup-btn {
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.signup-free-btn:hover {
+    background-color: #0056b3;
+}
+
+.animate__animated {
+    animation-duration: 1s;
+}
+
+.animate__bounceInLeft {
+    animation-name: bounceInLeft;
+}
+
+.animate__fadeInLeft {
+    animation-name: fadeInLeft;
+}
+
+@keyframes bounceInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

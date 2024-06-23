@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Letter P</title>
+    <link href="style.css" rel="stylesheet" />
+    <link href="image-puzzle.css" rel="stylesheet" />
+    <script src="image-puzzle.js"></script>
+  </head>
+  <style>
+    /* Add custom styles here */
+    #gameOver {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .success-message {
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+
+  </style>
+  <body>
+    <div id="collage">
+      <div>Solve the Puzzle for Letter P</div>
+      <div id="playPanel" style="padding: 5px">
+        <div
+          style="
+            display: inline-block;
+            margin: auto;
+            width: 100%;
+            vertical-align: top;
+          "
+        >
+          <ul id="sortable" class="sortable"></ul>
+          <div id="actualImageBox">
+            <img id="actualImage" />
+            <button class="back-btn" onclick="window.location.href = '../choose_alpha.html';">Back</button>
+          </div>
+        </div>
+      </div>
+      <div id="gameOver" style="align-items: center; justify-content: center">
+        <div class="success-message">
+          <h2
+            style="color: var(--Blue, rgba(14, 120, 0, 0.8)); font-weight: 800"
+          >
+            SUCCESS
+          </h2>
+          <img src="image.png" alt="Original Image" width="300" />
+          <div style="color: deeppink; font-weight: bold; font-size: 40px">
+            P
+          </div>
+          <div style="color: deeppink; margin: 10px">for</div>
+          <div style="color: deeppink; font-weight: bold; font-size: 40px">
+            PUZZLE
+          </div>
+          <div class="button">
+            <button
+              class="next-alpha"
+              type="button"
+              onclick="window.location.href='../choose_alpha.html'"
+            >
+              Choose Alphabet
+            </button>
+            <button
+              class="next-alpha"
+              type="button"
+              onclick="window.location.reload()"
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      </div>
+      <script>
+        var images = [{ src: "image.png", title: "London Bridge" }];
+
+        window.onload = function () {
+          var gridSize = 3;
+          imagePuzzle.startGame(images, gridSize);
+        };
+
+        function restart() {
+          var gridSize = 3; // Default grid size
+          imagePuzzle.startGame(images, gridSize);
+        }
+      </script>
+    </div>
+  </body>
+</html>
