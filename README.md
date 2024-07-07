@@ -19,7 +19,17 @@ In this main page consists of 2 images 'learn alphabets' in which it helps to na
 
 <img width="958" alt="Alphabets4" src="https://github.com/VermaAyush2k4/Alphabetlearning-for-child-consists-puzzles-useremotions/assets/117018341/f8b0c645-6014-43b5-bb73-61759a39191a">
 
+# Writing practice by understanding through videos:
 
+<img width="714" alt="Alphabets6" src="https://github.com/VermaAyush2k4/Alphabetlearning-for-child-consists-puzzles-useremotions/assets/117018341/d57b06c3-e027-4eb1-98f7-9e89d037ac74">
+
+# User/child emotions:
+
+<img width="956" alt="Alphabets7" src="https://github.com/VermaAyush2k4/Alphabetlearning-for-child-consists-puzzles-useremotions/assets/117018341/4134c5ce-d9b4-4011-8e28-621c7b5bd376">
+
+# Puzzles and Gamification:
+
+<img width="371" alt="Alphabets8" src="https://github.com/VermaAyush2k4/Alphabetlearning-for-child-consists-puzzles-useremotions/assets/117018341/099f1dbf-26ad-417b-b9a0-df69243e4c08">
 
 
 
