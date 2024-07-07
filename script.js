@@ -49,17 +49,14 @@ function hideContainers() {
 }
 
 function nextLetter() {
-    if (currentLetterIndex < containers.length - 1) {
-        hideContainers();
-        currentLetterIndex++;
-        containers[currentLetterIndex].style.display = 'block';
-    }
+    hideContainers();
+    currentLetterIndex = (currentLetterIndex + 1) % 26;
+    containers[currentLetterIndex].style.display = 'block';
+
 }
 
 function prevLetter() {
-    if (currentLetterIndex > 0) {
-        hideContainers();
-        currentLetterIndex--;
-        containers[currentLetterIndex].style.display = 'block';
-    }
+    hideContainers();
+    currentLetterIndex = (currentLetterIndex - 1 + containers.length) % 26;
+    containers[currentLetterIndex].style.display = 'block';
 }
