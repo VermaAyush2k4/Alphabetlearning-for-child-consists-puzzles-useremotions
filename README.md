@@ -1,4 +1,3 @@
-<img width="946" alt="Alphabets10" src="https://github.com/VermaAyush2k4/Alphabetlearning-for-child-consists-puzzles-useremotions/assets/117018341/76384d22-6927-4c0d-a79f-a2d57b29efb4"># Alphabetlearning-for-child-consists-puzzles-useremotions
 
 # Overview:
 This project is proposed Alphabet learning system with different software tools which helps child to learn alphabet so that he can speak,pronounce that letter and practice that letter in canvas and tracing alphabets,USER emotions while practising letter,Gamification.
@@ -31,11 +30,14 @@ In this main page consists of 2 images 'learn alphabets' in which it helps to na
 
 <img width="371" alt="Alphabets8" src="https://github.com/VermaAyush2k4/Alphabetlearning-for-child-consists-puzzles-useremotions/assets/117018341/099f1dbf-26ad-417b-b9a0-df69243e4c08">
 
+
 # Tracing letters so that they can easily understand how to draw particular letter(new_index.html file):
 
 <img width="946" alt="Alphabets9" src="https://github.com/VermaAyush2k4/Alphabetlearning-for-child-consists-puzzles-useremotions/assets/117018341/0a986ffa-263b-46bc-8d08-34c84edac67d">
 
+
 <img width="946" alt="Alphabets10" src="https://github.com/VermaAyush2k4/Alphabetlearning-for-child-consists-puzzles-useremotions/assets/117018341/b9afdb0a-7a64-4aa8-811d-6149616c2a31">
+
 
 # Software tools:
 
